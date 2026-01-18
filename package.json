@@ -1,0 +1,31 @@
+{
+  "name": "autolux-car-showroom",
+  "version": "1.0.0",
+  "description": "Website bán ô tô cao cấp - Vanilla JavaScript",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8000 -o",
+    "dev": "npx live-server --port=5500",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "car",
+    "showroom",
+    "automobile",
+    "vanilla-js",
+    "responsive",
+    "ecommerce"
+  ],
+  "author": "AutoLux Team",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/autolux-showroom.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/autolux-showroom/issues"
+  },
+  "homepage": "https://github.com/yourusername/autolux-showroom#readme"
+}

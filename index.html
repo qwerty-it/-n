@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Showroom ô tô cao cấp - Mua bán xe hơi chính hãng, giá tốt nhất thị trường">
+    <meta name="keywords" content="ô tô, xe hơi, mua xe, bán xe, showroom">
+    <title>AutoLux - Showroom Ô Tô Cao Cấp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/favorites-popup.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "AutoLux Showroom",
+      "description": "Showroom ô tô cao cấp",
+      "url": "https://autolux.example.com"
+    }
+    </script>
+</head>
+<body>
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Header & Navigation -->
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <div class="nav-brand">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M5 17h14v-5l-1.5-4.5h-11L5 12v5z" stroke-width="2"/>
+                    <circle cx="7.5" cy="17.5" r="1.5"/>
+                    <circle cx="16.5" cy="17.5" r="1.5"/>
+                </svg>
+                <span class="logo-text">AutoLux</span>
+            </div>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link active">Trang chủ</a></li>
+                <li><a href="catalog.html" class="nav-link">Xe mới</a></li>
+                <li><a href="used-cars.html" class="nav-link">Xe cũ</a></li>
+                <li><a href="compare.html" class="nav-link">So sánh</a></li>
+                <li><a href="calculator.html" class="nav-link">Tính vay</a></li>
+                <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="icon-btn" id="favorites-btn" aria-label="Favorites" onclick="showFavoritesPopup()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2"/>
+                    </svg>
+                    <span class="badge" id="favorites-count">0</span>
+                </button>
+                <button class="icon-btn" id="cart-btn" aria-label="Cart">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="9" cy="21" r="1" stroke-width="2"/>
+                        <circle cx="20" cy="21" r="1" stroke-width="2"/>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" stroke-width="2"/>
+                    </svg>
+                    <span class="badge" id="cart-count">0</span>
+                </button>
+                <button class="btn btn-primary" id="auth-btn">Đăng nhập</button>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg parallax"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+            <div class="hero-badge animate-fade-in">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke-width="2"/>
+                </svg>
+                <span>Showroom #1 Việt Nam</span>
+            </div>
+            <h1 class="hero-title animate-fade-in">
+                Khám phá bộ sưu tập<br>
+                <span class="highlight-gradient">Xe cao cấp</span> đẳng cấp
+            </h1>
+            <p class="hero-subtitle animate-fade-in">
+                Hơn 500+ mẫu xe từ các thương hiệu hàng đầu thế giới<br>
+                Uy tín - Chất lượng - Giá tốt nhất thị trường
+            </p>
+            <div class="hero-stats animate-fade-in">
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M5 17h14v-5l-1.5-4.5h-11L5 12v5z" stroke-width="2"/>
+                            <circle cx="7.5" cy="17.5" r="1.5"/>
+                            <circle cx="16.5" cy="17.5" r="1.5"/>
+                        </svg>
+                    </div>
+                    <span class="stat-number" data-target="500">0</span>
+                    <span class="stat-label">Xe bán ra</span>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-width="2"/>
+                            <circle cx="9" cy="7" r="4" stroke-width="2"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <span class="stat-number" data-target="1200">0</span>
+                    <span class="stat-label">Khách hàng</span>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <span class="stat-number" data-target="98">0</span>
+                    <span class="stat-label">% Hài lòng</span>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <span class="stat-number" data-target="10">0</span>
+                    <span class="stat-label">Năm kinh nghiệm</span>
+                </div>
+            </div>
+            <div class="hero-actions animate-fade-in">
+                <a href="catalog.html" class="btn btn-large btn-primary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="11" cy="11" r="8" stroke-width="2"/>
+                        <path d="m21 21-4.35-4.35" stroke-width="2"/>
+                    </svg>
+                    Khám phá ngay
+                </a>
+                <a href="calculator.html" class="btn btn-large btn-secondary-outline">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-width="2"/>
+                    </svg>
+                    Tính vay mua xe
+                </a>
+            </div>
+            <div class="hero-scroll animate-fade-in">
+                <span>Cuộn xuống</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 5v14M19 12l-7 7-7-7" stroke-width="2"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Danh mục</span>
+                <h2 class="section-title">Tìm xe theo loại</h2>
+                <p class="section-description">Chọn loại xe phù hợp với nhu cầu của bạn</p>
+            </div>
+            <div class="categories-grid">
+                <a href="catalog.html" class="category-card">
+                    <div class="category-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M5 17h14v-5l-1.5-4.5h-11L5 12v5z" stroke-width="2"/>
+                            <circle cx="7.5" cy="17.5" r="1.5"/>
+                            <circle cx="16.5" cy="17.5" r="1.5"/>
+                        </svg>
+                    </div>
+                    <h3>Sedan</h3>
+                    <p>Xe 4-5 chỗ sang trọng</p>
+                    <span class="category-count">15+ xe</span>
+                </a>
+                <a href="catalog.html" class="category-card">
+                    <div class="category-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M5 17h14v-5l-1.5-4.5h-11L5 12v5z" stroke-width="2"/>
+                            <circle cx="7.5" cy="17.5" r="1.5"/>
+                            <circle cx="16.5" cy="17.5" r="1.5"/>
+                            <path d="M12 2v5" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>SUV</h3>
+                    <p>Xe đa dụng 5-7 chỗ</p>
+                    <span class="category-count">20+ xe</span>
+                </a>
+                <a href="catalog.html" class="category-card">
+                    <div class="category-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M5 17h14v-5l-1.5-4.5h-11L5 12v5z" stroke-width="2"/>
+                            <circle cx="7.5" cy="17.5" r="1.5"/>
+                            <circle cx="16.5" cy="17.5" r="1.5"/>
+                            <path d="M2 12h4" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Bán tải</h3>
+                    <p>Xe bán tải mạnh mẽ</p>
+                    <span class="category-count">5+ xe</span>
+                </a>
+                <a href="catalog.html" class="category-card">
+                    <div class="category-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Xe điện</h3>
+                    <p>Xe thân thiện môi trường</p>
+                    <span class="category-count">3+ xe</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section class="brands-section">
+        <div class="container">
+            <h3 class="brands-title">Đối tác thương hiệu hàng đầu</h3>
+            <div class="brands-slider">
+                <div class="brand-item">Mercedes-Benz</div>
+                <div class="brand-item">BMW</div>
+                <div class="brand-item">Audi</div>
+                <div class="brand-item">Lexus</div>
+                <div class="brand-item">Porsche</div>
+                <div class="brand-item">Toyota</div>
+                <div class="brand-item">Honda</div>
+                <div class="brand-item">Mazda</div>
+                <div class="brand-item">Hyundai</div>
+                <div class="brand-item">Kia</div>
+                <div class="brand-item">Tesla</div>
+                <div class="brand-item">Ford</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hot Deals Section -->
+    <section class="hot-deals-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">🔥 Hot Deals</span>
+                <h2 class="section-title">Ưu đãi đặc biệt</h2>
+                <p class="section-description">Những mẫu xe đang có chương trình khuyến mãi hấp dẫn</p>
+            </div>
+            <div class="deals-grid">
+                <div class="deal-card deal-card-large">
+                    <div class="deal-badge">Giảm 200 triệu</div>
+                    <div class="deal-content">
+                        <h3>Mercedes-Benz S450 Luxury</h3>
+                        <div class="deal-price">
+                            <span class="price-old">4.050 tỷ</span>
+                            <span class="price-new">3.850 tỷ</span>
+                        </div>
+                        <p>Sedan hạng sang đỉnh cao - Ưu đãi đến 31/12/2024</p>
+                        <a href="catalog.html" class="btn btn-primary">Xem chi tiết</a>
+                    </div>
+                    <div class="deal-image">
+                        <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=600&h=400&fit=crop" alt="Mercedes S450">
+                    </div>
+                </div>
+                <div class="deal-card">
+                    <div class="deal-badge">Giảm 150 triệu</div>
+                    <h4>BMW X5 xDrive40i</h4>
+                    <div class="deal-price-small">
+                        <span class="price-old">3.100 tỷ</span>
+                        <span class="price-new">2.950 tỷ</span>
+                    </div>
+                    <a href="catalog.html" class="deal-link">Xem ngay →</a>
+                </div>
+                <div class="deal-card">
+                    <div class="deal-badge">Giảm 100 triệu</div>
+                    <h4>Audi A6 Quattro</h4>
+                    <div class="deal-price-small">
+                        <span class="price-old">1.750 tỷ</span>
+                        <span class="price-new">1.650 tỷ</span>
+                    </div>
+                    <a href="catalog.html" class="deal-link">Xem ngay →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Ưu điểm</span>
+                <h2 class="section-title">Tại sao chọn AutoLux?</h2>
+                <p class="section-description">Chúng tôi cam kết mang đến trải nghiệm mua xe tốt nhất</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Uy tín hàng đầu</h3>
+                    <p>Hơn 10 năm kinh nghiệm trong ngành ô tô cao cấp với hàng nghìn khách hàng tin tưởng</p>
+                    <div class="feature-number">01</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-width="2"/>
+                            <polyline points="22 4 12 14.01 9 11.01" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Xe chính hãng 100%</h3>
+                    <p>Cam kết nguồn gốc rõ ràng, bảo hành chính hãng từ nhà sản xuất</p>
+                    <div class="feature-number">02</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Hỗ trợ vay 80%</h3>
+                    <p>Lãi suất ưu đãi từ 7.5%/năm, thủ tục nhanh chóng chỉ trong 24h</p>
+                    <div class="feature-number">03</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-width="2"/>
+                            <circle cx="9" cy="7" r="4" stroke-width="2"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Tư vấn chuyên nghiệp</h3>
+                    <p>Đội ngũ tư vấn giàu kinh nghiệm, nhiệt tình, hỗ trợ 24/7</p>
+                    <div class="feature-number">04</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M9 11l3 3L22 4" stroke-width="2"/>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Kiểm tra kỹ lưỡng</h3>
+                    <p>Mọi xe đều được kiểm tra 150 điểm trước khi bàn giao</p>
+                    <div class="feature-number">05</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" stroke-width="2"/>
+                            <line x1="6" y1="1" x2="6" y2="4" stroke-width="2"/>
+                            <line x1="10" y1="1" x2="10" y2="4" stroke-width="2"/>
+                            <line x1="14" y1="1" x2="14" y2="4" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Bảo hành toàn diện</h3>
+                    <p>Bảo hành chính hãng 3-5 năm, bảo dưỡng miễn phí 1 năm</p>
+                    <div class="feature-number">06</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Cars Section -->
+    <section class="featured-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">🆕 Xe mới</span>
+                <h2 class="section-title">Xe mới 100%</h2>
+                <p class="section-description">Những mẫu xe mới nhất từ các thương hiệu hàng đầu, chính hãng, bảo hành toàn diện</p>
+            </div>
+            
+            <!-- New Cars Grid -->
+            <div class="car-grid featured-grid" id="new-cars"></div>
+            
+            <!-- View All Button -->
+            <div class="text-center" style="margin-top: 2rem;">
+                <a href="catalog.html?condition=new" class="btn btn-primary btn-large">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="11" cy="11" r="8" stroke-width="2"/>
+                        <path d="m21 21-4.35-4.35" stroke-width="2"/>
+                    </svg>
+                    Xem tất cả xe mới
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Used Cars Section -->
+    <section class="featured-section" style="background-color: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">♻️ Xe cũ</span>
+                <h2 class="section-title">Xe đã qua sử dụng</h2>
+                <p class="section-description">Xe cũ chất lượng cao, đã kiểm tra kỹ lưỡng, giá tốt nhất thị trường</p>
+            </div>
+            
+            <!-- Used Cars Grid -->
+            <div class="car-grid featured-grid" id="used-cars"></div>
+            
+            <!-- View All Button -->
+            <div class="text-center" style="margin-top: 2rem;">
+                <a href="catalog.html?condition=used" class="btn btn-primary btn-large">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="11" cy="11" r="8" stroke-width="2"/>
+                        <path d="m21 21-4.35-4.35" stroke-width="2"/>
+                    </svg>
+                    Xem tất cả xe cũ
+                </a>
+                <a href="compare.html" class="btn btn-secondary btn-large" style="margin-left: 1rem;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" stroke-width="2"/>
+                        <polyline points="15 3 21 3 21 9" stroke-width="2"/>
+                        <line x1="10" y1="14" x2="21" y2="3" stroke-width="2"/>
+                    </svg>
+                    So sánh xe
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Đánh giá</span>
+                <h2 class="section-title">Khách hàng nói gì về chúng tôi</h2>
+                <p class="section-description">Hàng nghìn khách hàng hài lòng với dịch vụ của AutoLux</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                    <p class="testimonial-text">"Dịch vụ tuyệt vời! Tư vấn nhiệt tình, xe chất lượng. Tôi đã mua Mercedes C300 tại đây và rất hài lòng."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">NV</div>
+                        <div class="author-info">
+                            <h4>Nguyễn Văn A</h4>
+                            <p>CEO, Tech Company</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                    <p class="testimonial-text">"Thủ tục vay nhanh chóng, lãi suất tốt. Nhân viên hỗ trợ rất tận tình. Rất đáng tin cậy!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">TM</div>
+                        <div class="author-info">
+                            <h4>Trần Minh B</h4>
+                            <p>Doanh nhân</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                    <p class="testimonial-text">"Showroom đẹp, xe đa dạng. Được lái thử thoải mái trước khi quyết định. Rất chuyên nghiệp!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">LH</div>
+                        <div class="author-info">
+                            <h4>Lê Hoàng C</h4>
+                            <p>Kiến trúc sư</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Dịch vụ</span>
+                <h2 class="section-title">Dịch vụ toàn diện</h2>
+                <p class="section-description">Chúng tôi cung cấp đầy đủ dịch vụ từ mua xe đến bảo dưỡng</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🚗</div>
+                    <h3>Lái thử miễn phí</h3>
+                    <p>Trải nghiệm xe trước khi quyết định mua. Đặt lịch dễ dàng, linh hoạt thời gian.</p>
+                    <a href="catalog.html" class="service-link">Đặt lịch ngay →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3>Hỗ trợ tài chính</h3>
+                    <p>Tư vấn vay vốn với lãi suất ưu đãi, thủ tục nhanh gọn, duyệt trong 24h.</p>
+                    <a href="calculator.html" class="service-link">Tính toán ngay →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Bảo dưỡng định kỳ</h3>
+                    <p>Dịch vụ bảo dưỡng chuyên nghiệp, phụ tùng chính hãng, giá cả hợp lý.</p>
+                    <a href="contact.html" class="service-link">Tìm hiểu thêm →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔄</div>
+                    <h3>Thu mua xe cũ</h3>
+                    <p>Định giá miễn phí, thu mua nhanh chóng, hỗ trợ đổi xe mới.</p>
+                    <a href="contact.html" class="service-link">Định giá xe →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <h3>Hỗ trợ giấy tờ</h3>
+                    <p>Hỗ trợ làm đầy đủ giấy tờ, đăng ký, sang tên nhanh chóng.</p>
+                    <a href="contact.html" class="service-link">Liên hệ →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Bảo hiểm xe</h3>
+                    <p>Tư vấn và hỗ trợ mua bảo hiểm xe với giá tốt nhất.</p>
+                    <a href="contact.html" class="service-link">Tư vấn ngay →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Quy trình</span>
+                <h2 class="section-title">Quy trình mua xe đơn giản</h2>
+                <p class="section-description">Chỉ 4 bước để sở hữu chiếc xe mơ ước</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Tìm kiếm & Chọn xe</h3>
+                        <p>Duyệt qua bộ sưu tập xe đa dạng, sử dụng bộ lọc để tìm xe phù hợp với nhu cầu và ngân sách.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Đặt lịch lái thử</h3>
+                        <p>Liên hệ với chúng tôi để đặt lịch lái thử. Trải nghiệm thực tế xe trước khi quyết định.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Tư vấn & Thương lượng</h3>
+                        <p>Nhân viên tư vấn sẽ hỗ trợ về giá, phương thức thanh toán và các ưu đãi đặc biệt.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Hoàn tất & Nhận xe</h3>
+                        <p>Hoàn tất thủ tục, ký hợp đồng và nhận xe. Chúng tôi hỗ trợ toàn bộ giấy tờ cần thiết.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid-large">
+                <div class="stat-card-large">
+                    <div class="stat-icon-large">🏆</div>
+                    <div class="stat-number-large" data-target="15">0</div>
+                    <div class="stat-label-large">Giải thưởng</div>
+                    <p>Showroom uy tín nhất</p>
+                </div>
+                <div class="stat-card-large">
+                    <div class="stat-icon-large">🚗</div>
+                    <div class="stat-number-large" data-target="500">0</div>
+                    <div class="stat-label-large">Xe bán ra/năm</div>
+                    <p>Đa dạng các dòng xe</p>
+                </div>
+                <div class="stat-card-large">
+                    <div class="stat-icon-large">😊</div>
+                    <div class="stat-number-large" data-target="98">0</div>
+                    <div class="stat-label-large">% Hài lòng</div>
+                    <p>Khách hàng tin tưởng</p>
+                </div>
+                <div class="stat-card-large">
+                    <div class="stat-icon-large">⭐</div>
+                    <div class="stat-number-large" data-target="4.9">0</div>
+                    <div class="stat-label-large">Đánh giá</div>
+                    <p>Trên 1000+ reviews</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog/News Section -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Tin tức</span>
+                <h2 class="section-title">Tin tức & Khuyến mãi</h2>
+                <p class="section-description">Cập nhật thông tin mới nhất về ô tô và các chương trình ưu đãi</p>
+            </div>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&h=600&fit=crop" alt="Blog">
+                        <span class="blog-badge">Khuyến mãi</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span>📅 15/11/2024</span>
+                            <span>👁️ 1.2K views</span>
+                        </div>
+                        <h3>Ưu đãi cuối năm - Giảm đến 200 triệu</h3>
+                        <p>Chương trình khuyến mãi lớn nhất trong năm với nhiều ưu đãi hấp dẫn cho khách hàng mua xe...</p>
+                        <a href="#" class="blog-link">Đọc thêm →</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&h=600&fit=crop" alt="Blog">
+                        <span class="blog-badge">Hướng dẫn</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span>📅 12/11/2024</span>
+                            <span>👁️ 856 views</span>
+                        </div>
+                        <h3>Bí quyết chọn xe phù hợp với gia đình</h3>
+                        <p>Những yếu tố cần cân nhắc khi chọn mua xe cho gia đình: không gian, an toàn, tiết kiệm...</p>
+                        <a href="#" class="blog-link">Đọc thêm →</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&h=600&fit=crop" alt="Blog">
+                        <span class="blog-badge">Tin tức</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span>📅 10/11/2024</span>
+                            <span>👁️ 2.1K views</span>
+                        </div>
+                        <h3>Top 10 xe bán chạy nhất tháng 11</h3>
+                        <p>Cập nhật danh sách những mẫu xe được khách hàng quan tâm và lựa chọn nhiều nhất...</p>
+                        <a href="#" class="blog-link">Đọc thêm →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Sẵn sàng tìm chiếc xe mơ ước?</h2>
+                <p>Liên hệ ngay với chúng tôi để được tư vấn và trải nghiệm lái thử miễn phí</p>
+                <div class="cta-buttons">
+                    <a href="catalog.html" class="btn btn-primary btn-large">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="11" cy="11" r="8" stroke-width="2"/>
+                            <path d="m21 21-4.35-4.35" stroke-width="2"/>
+                        </svg>
+                        Xem danh sách xe
+                    </a>
+                    <a href="contact.html" class="btn btn-secondary btn-large">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke-width="2"/>
+                        </svg>
+                        Liên hệ ngay
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>AutoLux</h4>
+                    <p>Showroom ô tô cao cấp uy tín hàng đầu Việt Nam</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên kết</h4>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="catalog.html">Xe mới</a></li>
+                        <li><a href="used-cars.html">Xe cũ</a></li>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Hỗ trợ</h4>
+                    <ul>
+                        <li><a href="#">Chính sách bảo hành</a></li>
+                        <li><a href="#">Hướng dẫn mua xe</a></li>
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AutoLux. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Car Detail Modal -->
+    <div class="modal" id="car-detail-modal">
+        <div class="modal-content modal-large">
+            <button class="modal-close" onclick="closeModal('car-detail-modal')">&times;</button>
+            <div id="car-detail-content"></div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="auth-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('auth-modal')">&times;</button>
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Đăng nhập</button>
+                <button class="auth-tab" data-tab="register">Đăng ký</button>
+            </div>
+            <form id="login-form" class="auth-form">
+                <h3>Đăng nhập</h3>
+                <div class="input-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="input-group">
+                    <label for="login-password">Mật khẩu</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
+            </form>
+            <form id="register-form" class="auth-form hidden">
+                <h3>Đăng ký</h3>
+                <div class="input-group">
+                    <label for="register-name">Họ tên</label>
+                    <input type="text" id="register-name" required>
+                </div>
+                <div class="input-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" required>
+                </div>
+                <div class="input-group">
+                    <label for="register-password">Mật khẩu</label>
+                    <input type="password" id="register-password" required minlength="6">
+                </div>
+                <div class="input-group">
+                    <label for="register-confirm-password">Nhập lại mật khẩu</label>
+                    <input type="password" id="register-confirm-password" required minlength="6">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Đăng ký</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('cart-modal')">&times;</button>
+            <h3>Giỏ hàng</h3>
+            <div id="cart-content"></div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Tổng cộng:</span>
+                    <span id="cart-total">0 VNĐ</span>
+                </div>
+                <button class="btn btn-primary btn-block" id="checkout-btn">Thanh toán</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkout-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('checkout-modal')">&times;</button>
+            <h3>Thanh toán</h3>
+            <form id="checkout-form">
+                <div class="input-group">
+                    <label for="checkout-name">Họ tên *</label>
+                    <input type="text" id="checkout-name" required>
+                </div>
+                <div class="input-group">
+                    <label for="checkout-phone">Số điện thoại *</label>
+                    <input type="tel" id="checkout-phone" required>
+                </div>
+                <div class="input-group">
+                    <label for="checkout-email">Email *</label>
+                    <input type="email" id="checkout-email" required>
+                </div>
+                <div class="input-group">
+                    <label for="checkout-address">Địa chỉ *</label>
+                    <textarea id="checkout-address" rows="3" required></textarea>
+                </div>
+                <div class="checkout-summary" id="checkout-summary"></div>
+                <button type="submit" class="btn btn-primary btn-block">Xác nhận đơn hàng</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Gallery Modal -->
+    <div class="modal" id="gallery-modal">
+        <div class="modal-content modal-gallery">
+            <button class="modal-close" onclick="closeModal('gallery-modal')">&times;</button>
+            <div class="gallery-container">
+                <button class="gallery-nav gallery-prev" id="gallery-prev">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M15 18l-6-6 6-6" stroke-width="2"/>
+                    </svg>
+                </button>
+                <img id="gallery-image" src="" alt="Car image">
+                <button class="gallery-nav gallery-next" id="gallery-next">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M9 18l6-6-6-6" stroke-width="2"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="gallery-thumbnails" id="gallery-thumbnails"></div>
+        </div>
+    </div>
+
+    <!-- Test Drive Modal -->
+    <div class="modal" id="test-drive-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('test-drive-modal')">&times;</button>
+            <h3>Đặt lịch lái thử</h3>
+            <form id="test-drive-form">
+                <div class="input-group">
+                    <label for="test-name">Họ tên *</label>
+                    <input type="text" id="test-name" required>
+                </div>
+                <div class="input-group">
+                    <label for="test-phone">Số điện thoại *</label>
+                    <input type="tel" id="test-phone" required>
+                </div>
+                <div class="input-group">
+                    <label for="test-date">Ngày lái thử *</label>
+                    <input type="date" id="test-date" required>
+                </div>
+                <div class="input-group">
+                    <label for="test-time">Giờ lái thử *</label>
+                    <input type="time" id="test-time" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Đặt lịch</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

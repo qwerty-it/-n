@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Danh sách xe cũ chất lượng cao - AutoLux Showroom">
+    <title>Danh sách xe cũ - AutoLux</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/catalog.css">
+    <link rel="stylesheet" href="css/favorites-popup.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Header & Navigation -->
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <div class="nav-brand">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M5 17h14v-5l-1.5-4.5h-11L5 12v5z" stroke-width="2"/>
+                    <circle cx="7.5" cy="17.5" r="1.5"/>
+                    <circle cx="16.5" cy="17.5" r="1.5"/>
+                </svg>
+                <span class="logo-text">AutoLux</span>
+            </div>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                <li><a href="catalog.html" class="nav-link">Xe mới</a></li>
+                <li><a href="used-cars.html" class="nav-link active">Xe cũ</a></li>
+                <li><a href="compare.html" class="nav-link">So sánh</a></li>
+                <li><a href="calculator.html" class="nav-link">Tính vay</a></li>
+                <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="icon-btn" id="favorites-btn" aria-label="Favorites">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2"/>
+                    </svg>
+                    <span class="badge" id="favorites-count">0</span>
+                </button>
+                <button class="icon-btn" id="cart-btn" aria-label="Cart">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="9" cy="21" r="1" stroke-width="2"/>
+                        <circle cx="20" cy="21" r="1" stroke-width="2"/>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" stroke-width="2"/>
+                    </svg>
+                    <span class="badge" id="cart-count">0</span>
+                </button>
+                <button class="btn btn-primary" id="auth-btn">Đăng nhập</button>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>♻️ Danh sách xe cũ</h1>
+            <p>Xe đã qua sử dụng chất lượng cao, đã kiểm tra kỹ lưỡng, giá tốt nhất thị trường</p>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section class="catalog-section">
+        <div class="container">
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="11" cy="11" r="8" stroke-width="2"/>
+                    <path d="m21 21-4.35-4.35" stroke-width="2"/>
+                </svg>
+                <input type="text" id="search-input" placeholder="Tìm kiếm xe theo tên, hãng..." class="search-input">
+            </div>
+
+            <!-- Filter & Sort Bar -->
+            <div class="filter-bar sticky-bar" id="filter-bar">
+                <div class="filter-group">
+                    <select id="filter-brand" class="filter-select">
+                        <option value="">Tất cả hãng</option>
+                    </select>
+                    <select id="filter-year" class="filter-select">
+                        <option value="">Năm sản xuất</option>
+                    </select>
+                    <select id="filter-fuel" class="filter-select">
+                        <option value="">Nhiên liệu</option>
+                        <option value="Xăng">Xăng</option>
+                        <option value="Dầu">Dầu</option>
+                        <option value="Hybrid">Hybrid</option>
+                        <option value="Điện">Điện</option>
+                    </select>
+                    <select id="filter-price" class="filter-select">
+                        <option value="">Khoảng giá</option>
+                        <option value="0-500">Dưới 500 triệu</option>
+                        <option value="500-800">500 - 800 triệu</option>
+                        <option value="800-1200">800 triệu - 1.2 tỷ</option>
+                        <option value="1200-2000">1.2 - 2 tỷ</option>
+                        <option value="2000-999999">Trên 2 tỷ</option>
+                    </select>
+                </div>
+                <div class="sort-group">
+                    <label for="sort-select">Sắp xếp:</label>
+                    <select id="sort-select" class="filter-select">
+                        <option value="default">Mặc định</option>
+                        <option value="price-asc">Giá tăng dần</option>
+                        <option value="price-desc">Giá giảm dần</option>
+                        <option value="year-desc">Năm mới nhất</option>
+                        <option value="km-asc">Km thấp nhất</option>
+                    </select>
+                </div>
+                <button class="btn btn-secondary" id="clear-filters">Xóa bộ lọc</button>
+            </div>
+
+            <!-- Loading Skeleton -->
+            <div class="skeleton-grid" id="skeleton-loader">
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+            </div>
+
+            <!-- Car Grid -->
+            <div class="car-grid" id="car-grid"></div>
+
+            <!-- Empty State -->
+            <div class="empty-state hidden" id="empty-state">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                    <line x1="12" y1="8" x2="12" y2="12" stroke-width="2"/>
+                    <line x1="12" y1="16" x2="12.01" y2="16" stroke-width="2"/>
+                </svg>
+                <h3>Không tìm thấy xe phù hợp</h3>
+                <p>Vui lòng thử lại với bộ lọc khác</p>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>AutoLux</h4>
+                    <p>Showroom ô tô cao cấp uy tín hàng đầu Việt Nam</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên kết</h4>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="catalog.html">Xe mới</a></li>
+                        <li><a href="used-cars.html">Xe cũ</a></li>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Hỗ trợ</h4>
+                    <ul>
+                        <li><a href="#">Chính sách bảo hành</a></li>
+                        <li><a href="#">Hướng dẫn mua xe</a></li>
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AutoLux. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="modals-container"></div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
